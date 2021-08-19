@@ -22,16 +22,14 @@ const campgroundRoutes = require('./routes/campgrounds')
 const reviewRoutes = require('./routes/reviews')
 const userRoutes = require('./routes/users')
 
-const dbUrl = process.env.DB_URL || 'mongodb://localhost/yelp-camp'
+const dbUrl = 'mongodb://localhost/yelp-camp'
 
-mongoose.connect(dbUrl, {
+mongoose.connect(`mongodb+srv://dbUserMain:RQNIQA7HD9coE2nL@cluster0.e61jn.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useFindAndModify: false,
     useCreateIndex: true,
 });
-
-
 
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
