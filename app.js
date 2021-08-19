@@ -73,7 +73,7 @@ const sessionConfig = {
     saveUninitialized: true,
     cookie: {
         httpOnly: true,
-        secure: true,
+        // secure: true,
         expires: Date.now() + 1000 * 60 * 60 * 24 * 7,
         maxAge: 1000 * 3600 * 24 * 7,
     }
@@ -165,7 +165,7 @@ app.use((err, req, res, next) => {
     res.render('error', { err });
 });
 
-const port = process.env.PORT || '3000'
+const port = process.env.PORT || 3000
 app.listen(port, () => {
     console.log(`connection open on port ${port}!`);
 });
