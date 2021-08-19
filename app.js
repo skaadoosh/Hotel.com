@@ -8,7 +8,6 @@ const mongoose = require('mongoose');
 const ejsMate = require('ejs-mate');
 const methodOverride = require('method-override')
 const ExpressError = require('./utils/ExpressError')
-const session = require('express-session')
 const flash = require('connect-flash')
 const User = require('./models/user')
 const passport = require('passport')
@@ -16,6 +15,7 @@ const LocalStrategy = require('passport-local')
 const mongoSanitize = require('express-mongo-sanitize');
 const helmet = require('helmet')
 
+const session = require('express-session')
 const MongoStore = require('connect-mongo')
 
 const campgroundRoutes = require('./routes/campgrounds')
@@ -55,7 +55,9 @@ const secret = process.env.SECRET || 'thisisasecret'
 
 const store = MongoStore.create({
     mongoUrl: dbUrl,
-    secret,
+    crypto: {
+        secret
+    },
     touchAfter: 24 * 3600
 })
 
