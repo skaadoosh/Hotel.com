@@ -22,13 +22,13 @@ const campgroundRoutes = require('./routes/campgrounds')
 const reviewRoutes = require('./routes/reviews')
 const userRoutes = require('./routes/users')
 
-const dbUrl = 'mongodb://localhost/yelp-camp'
+const dbUrl = process.env.DB_URL || 'mongodb://localhost/yelp-camp'
 
-mongoose.connect(`mongodb+srv://dbUserMain:RQNIQA7HD9coE2nL@cluster0.e61jn.mongodb.net/myFirstDatabase?retryWrites=true&w=majority`, {
+mongoose.connect(dbUrl, {
     useNewUrlParser: true,
+    useCreateIndex: true,
     useUnifiedTopology: true,
     useFindAndModify: false,
-    useCreateIndex: true,
 });
 
 const db = mongoose.connection;
@@ -54,33 +54,30 @@ app.use(mongoSanitize({
 const secret = process.env.SECRET || 'thisisasecret'
 
 const store = MongoStore.create({
-    secret,
     mongoUrl: dbUrl,
+    secret,
     touchAfter: 24 * 3600
 })
 
 store.on("error", function (e) {
-    console.log("Something went wrong!", e)
+    console.log("Something went wrong, session store!", e)
 })
 
 const sessionConfig = {
     store,
+    name: session,
     secret,
     resave: false,
     saveUninitialized: true,
     cookie: {
-        name: session,
         httpOnly: true,
         // secure: true,
-        sameSite: 'lax',
+        expires: Date.now() + 1000 * 60 * 60 * 24 * 7,
         maxAge: 1000 * 3600 * 24 * 7,
     }
 }
 app.use(session(sessionConfig))
 app.use(flash())
-
-app.use(passport.initialize())
-app.use(passport.session())
 app.use(helmet());
 
 
@@ -128,6 +125,9 @@ app.use(
     })
 );
 
+
+app.use(passport.initialize())
+app.use(passport.session())
 passport.use(new LocalStrategy(User.authenticate()))
 
 passport.serializeUser(User.serializeUser())
