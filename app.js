@@ -53,7 +53,10 @@ app.use(mongoSanitize({
     replaceWith: '_'
 }))
 
+const secret = process.env.SECRET || 'thisisasecret'
+
 const store = MongoStore.create({
+    secret,
     mongoUrl: dbUrl,
     touchAfter: 24 * 3600
 })
@@ -64,7 +67,7 @@ store.on("error", function (e) {
 
 const sessionConfig = {
     store,
-    secret: 'thisisasecret',
+    secret,
     resave: false,
     saveUninitialized: true,
     cookie: {
