@@ -4,7 +4,7 @@
 
 <div class="container my-3">
     <div class="row">
-        <div class="col-6 mx-auto">
+        <div class="col-10 col-md-6 mx-auto">
 
             <div class=" card">
                 <div id="campgroundCarousel" class="carousel slide"
@@ -43,17 +43,22 @@
                 </ul>
                 <div class="card-body">
                     <% if(currentUser && camp.author._id.equals(currentUser._id)) {%>
-                    <a class="card-link btn btn-warning"
-                        href="/campgrounds/<%= camp._id %>/edit">Edit</a>
+                    <div class=" d-inline">
+                        <a class="card-link btn btn-warning px-3 "
+                            href="/campgrounds/<%= camp._id %>/edit">Edit</a>
+                    </div>
 
-                    <form class="d-inline"
+                    <form class="d-inline float-md-end "
                         action="/campgrounds/<%= camp._id %>/delete?_method=delete"
                         method="POST">
-                        <button class="btn btn-danger">Remove</button>
+                        <button class="card-link btn btn-danger">Remove</button>
                     </form>
                     <% } %>
-                    <a class="card-link btn btn-secondary" href="/campgrounds">Back to all
-                        campgrounds</a>
+                    <div class="d-grid gap-2 d-lg-inline mt-3">
+                        <a class="card-link btn btn-secondary" href="/campgrounds">Back to all
+                            campgrounds</a>
+                    </div>
+                    
                 </div>
                 <div class="card-footer">
                     By <%= camp.author.email %>
@@ -61,7 +66,7 @@
             </div>
         </div>
 
-        <div class="col-4 mb-3">
+        <div class="col-10 col-md-4 mb-3 mx-auto mt-3 mt-md-0">
 
             <div id="map" style="width: 100%; height: 300px; margin-bottom: 1.5em;""></div>
             

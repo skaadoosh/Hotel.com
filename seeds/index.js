@@ -3,9 +3,9 @@ const mongoose = require('mongoose');
 const Campground = require('../models/campground');
 const cities = require('../seeds/cities');
 const { descriptors, places } = require('../seeds/seedHelpers');
-const {cityData} = require('./in')
+const { cityData } = require('./in')
 
-mongoose.connect('mongodb://localhost/yelp-camp', {
+mongoose.connect('mongodb+srv://dbUserMain:RQNIQA7HD9coE2nL@cluster0.e61jn.mongodb.net/myFirstDatabase?retryWrites=true&w=majority', {
     useNewUrlParser: true,
     useUnifiedTopology: true,
 });

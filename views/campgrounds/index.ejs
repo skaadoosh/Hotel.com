@@ -1,47 +1,47 @@
 <% layout('layouts/boilerplate') %>
 
 
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-md-12 mx-auto bg-light bg-gradient">
-            <div id="map" style="width: 90%; height: 400px;" class="mx-auto"></div>
-        </div>
-        <div class="col-md-8 mx-auto">
-            <h1 class="my-3">All campgrounds</h1>
+<div class="container-fluid mb-4">
+    <div class=" mx-auto bg-light bg-gradient">
+        <div id="map" style="width: 90%; height: 400px;" class="mx-auto"></div>
+    </div>
 
+    <section class="my-3 my-md-5 text-center">
+        <h1>All campgrounds</h1>
+    </section>
+
+    <div class="album container">
+
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
             <% for(let camp of campgrounds) { %>
-
-            <div class="card mt-3">
-                <div class="row">
-                    <div class="col-md-4">
-                        <% if(camp.images.length) {%>
-                        <img class="img-fluid" alt="" src="<%=camp.images[0].url%>">
-                        <% } else {%>
-                        <img
-                            src="https://res.cloudinary.com/kksenpai01/image/upload/v1628939807/YelpCamp/wpbc8j8juurhyyyubggh.jpg">
-                        <% } %>
-                    </div>
-                    <div class="col-md-8">
-                        <div class="card-body">
-                            <h3 class="card-title"><b><%= camp.title %></b>,
-                                <%= camp.location %></h3>
-                            <p class="card-text"><%= camp.description %>
-                                <span class="d-block"><b>Price:
-                                    </b>&#8377;<%= camp.price%> per
-                                    night</span>
-                            </p>
+            <div class="col">
+                <div class="card shadow-sm">
+                    <% if(camp.images.length) {%>
+                    <img class="img-fluid" alt="" src="<%=camp.images[0].url%>">
+                    <% } else {%>
+                    <img
+                        src="https://res.cloudinary.com/kksenpai01/image/upload/v1628939807/YelpCamp/wpbc8j8juurhyyyubggh.jpg">
+                    <% } %>
+                    <div class="card-body">
+                        <h4 class="card-title"><b><%= camp.title %></b></h3>
+                        <h6 class="card-subtitle mb-2 text-muted"><%= camp.location %></h5>
+                        <p class="card-text"><%= camp.description %>
+                            <span class="d-block"><b>Price:
+                                </b>&#8377;<%= camp.price%> per
+                                night</span>
+                        </p>
+                        <div class="d-grid gap-2 d-lg-block mt-auto">
                             <a href="/campgrounds/<%= camp._id %>"
-                                class="btn btn-primary">More</a>
+                                class="btn btn-primary card-link">More</a>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <% } %>
 
-            <a href="/">Home</a>
-            <a href="/campgrounds/new">New</a>
+            <% } %>
         </div>
+
     </div>
 </div>
 

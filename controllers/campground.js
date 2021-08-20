@@ -27,7 +27,6 @@ module.exports.newCamp = catchAsync(async (req, res, next) => {
     camp.author = req.user._id
     await camp.save()
 
-    console.log(camp)
     req.flash('success', 'Campground added!')
     res.redirect(`/campgrounds/${camp._id}`)
 })
