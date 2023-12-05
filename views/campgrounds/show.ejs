@@ -37,7 +37,7 @@
                     <p class="card-text"><%= camp.description %></p>
                 </div>
                 <ul class="list-group list-group-flush">
-                    <li class="list-group-item"><b>Price: </b>&#8377;<%= camp.price %> per
+                    <li class="list-group-item"><b>Price: </b>&#8377;<%= camp.price %> /
                         night</li>
                     <li class="list-group-item"><b>Location: </b><%= camp.location %></li>
                 </ul>
@@ -55,10 +55,11 @@
                     </form>
                     <% } %>
                     <div class="d-grid gap-2 d-lg-inline mt-3">
-                        <a class="card-link btn btn-secondary" href="/campgrounds">Back to all
+                        <a class="card-link btn btn-secondary" href="/campgrounds">Back to
+                            all
                             campgrounds</a>
                     </div>
-                    
+
                 </div>
                 <div class="card-footer">
                     By <%= camp.author.email %>

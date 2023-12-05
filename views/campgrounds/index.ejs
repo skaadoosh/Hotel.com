@@ -7,7 +7,7 @@
     </div>
 
     <section class="my-3 my-md-5 text-center">
-        <h1>All campgrounds</h1>
+        <h1>All campgrounds & hotels</h1>
     </section>
 
     <div class="album container">
@@ -24,16 +24,17 @@
                     <% } %>
                     <div class="card-body">
                         <h4 class="card-title"><b><%= camp.title %></b></h3>
-                        <h6 class="card-subtitle mb-2 text-muted"><%= camp.location %></h5>
-                        <p class="card-text"><%= camp.description %>
-                            <span class="d-block"><b>Price:
-                                </b>&#8377;<%= camp.price%> per
-                                night</span>
-                        </p>
-                        <div class="d-grid gap-2 d-lg-block mt-auto">
-                            <a href="/campgrounds/<%= camp._id %>"
-                                class="btn btn-primary card-link">More</a>
-                        </div>
+                            <h6 class="card-subtitle mb-2 text-muted"><%= camp.location %>
+                                </h5>
+                                <p class="card-text"><%= camp.description %>
+                                    <span class="d-block"><b>Price:
+                                        </b>&#8377;<%= camp.price%> /
+                                        night</span>
+                                </p>
+                                <div class="d-grid gap-2 d-lg-block mt-auto">
+                                    <a href="/campgrounds/<%= camp._id %>"
+                                        class="btn btn-primary card-link">More</a>
+                                </div>
                     </div>
                 </div>
             </div>
