@@ -1,1 +1,4 @@
-WebSite Link: https://serene-thicket-32769.herokuapp.com/
+## Steps to ru the project:
+Git clone 
+npm i
+npm start
